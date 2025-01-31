@@ -4,7 +4,6 @@
 ✦ like-icon — для svg-иконки анимированного сердца
 ✦ card__like-button — для кнопки Like рядом с иконкой
 ✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
@@ -13,4 +12,363 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+
+  margin: 0 auto;
+
+  font-family: var(--ff-main), sans-serif;
+  font-weight: var(--fw-main);
+
+  background-color: #fff;
+  background-image: var(--page-background);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.button {
+  appearance: none;
+
+  position: relative;
+  
+  background: #fff;
+  border: 2px solid #000;
+}
+
+.button::before {
+  content: '';
+
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: #000;
+
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: left;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 0 var(--accent-color);
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+  z-index: 2;
+}
+
+.button__text,
+.button__svg {
+  position: relative;
+  z-index: 3;
+
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
+}
+
+.button__svg {
+  filter: invert(1) /* С mix-blend-mode не выходит по неизвестной мне причине, сделал через invert */
+}
+
+.card__icon-button {
+  padding: 0;
+
+  width: 41px;
+  height: 41px;
+  
+  cursor: pointer;
+  border: 2px solid transparent;
+
+  transition: border 0.3s ease;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--accent-color);
+}
+
+/* Header */
+
+.header {
+  margin: 100px auto 0;
+
+  max-width: 700px;
+
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+
+  background: #fff;
+  border: 2px solid #000;
+}
+
+.header__title {
+  margin-top: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem);
+
+  font-family: var(--ff-supporting);
+  font-size: var(--fz-header-h1);
+}
+
+.header__description {
+  margin-top: 20px;
+  margin-bottom: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem);
+
+  font-family: var(--ff-supporting);
+  font-size: var(--fz-header-span);
+  text-transform: uppercase;
+}
+
+/* Main */
+
+main {
+  margin-top: 100px;
+
+  display: flex;
+}
+
+.main__cards-list {
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+}
+
+.main__card {
+  max-width: 696px;
+
+  border: 2px solid #000;
+  background: #fff;
+}
+
+.main__card-title {
+  margin: 5px 8px;
+
+  font-weight: var(--fw-h2);
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.main__card-image-elements {
+  border-top: 2px solid #000;
+
+  position: relative;
+  z-index: 0;
+}
+
+.main__card-image-label {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 1;
+
+  opacity: 0.5;
+
+  color: #000;
+  font-family: var(--ff-supporting);
+  font-size: 14px;
+  line-height: 1;
+  text-shadow: 0 0 1px var(--text-shadow-label);
+  mix-blend-mode: hard-light;
+}
+
+.main__card-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+  object-position: right;
+  
+  border-bottom: 2px solid #000;
+}
+
+.main__card-textes {
+  padding: 25px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.main__card-buttons {
+  margin: 0 23px 25px 0;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 12px;
+}
+
+.card__like-button {
+  padding: 12.5px 35px;
+
+  font-family: var(--ff-supporting);
+  font-size: 14px;
+  line-height: 12.6px;
+
+  cursor: pointer;
+}
+/* Footer */
+
+.footer {
+  margin: 50px 0 103px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.footer__button {
+  padding: 15px 20px;
+
+  cursor: pointer;
+
+  font-family: var(--ff-supporting);
+  font-size: 14px;
+  line-height: 12.6px;
+}
+
+.footer__button-img {
+  width: 21px;
+  height: 21px; 
+}
+
+/* Modal */
+
+dialog {
+  border: 2px solid #000;
+}
+
+.modal {
+  padding: 30px;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+
+  background: #fff;
+}
+
+.modal[open] {
+  display: flex;
+}
+
+.modal::backdrop {
+  background: rgb(0 0 0 / 0.75);
+}
+
+.modal__textes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.modal__text-image {
+  width: 39px;
+  height: 39px;
+}
+
+.modal__title {
+  font-family: var(--ff-supporting);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.modal form {
+  width: 100%;
+}
+
+.modal__button {
+  padding: 12.5px 132.5px;
+
+  width: 100%;
+
+  cursor: pointer;
+
+  font-family: var(--ff-supporting);
+  font-size: 14px;
+  line-height: 12.6px;
+}
+
+/* Filters */
+
+.card__blur {
+  filter: blur(10px);
+}
+
+.card__brightness {
+  filter: brightness(0.5);
+}
+
+.card__contrast {
+  filter: contrast(2);
+}
+
+.card__grayscale {
+  filter: grayscale(0.75);
+}
+
+.card__hue-rotate {
+  filter: hue-rotate(180deg);
+}
+
+.card__sepia {
+  filter: sepia(65%);
+}
+
+.card__multifilter {
+  filter: contrast(1.5) blur(1.5px) hue-rotate(5deg);
+}
+
+.card__saturate {
+  filter: saturate(0);
+}
+
+/* Requests */
+
+@supports ((-webkit-text-stroke: 1px var(--text-shadow-label, #fff)) or (text-stroke: 1px var(--text-shadow-label, #fff))) {
+  .main__card-image-label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--text-shadow-label, #fff);
+    text-stroke: 1px var(--text-shadow-label, #fff);
+  }
+}
+
+@media (width <= 375px) {
+  .header {
+    max-width: 100%;
+  }
+
+  .main__card {
+    width: 100%;
+  }
+
+  .footer__button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .modal {
+    padding: 30px 39px;
+  }
+
+  .modal__button {
+    padding: 12.5px 0;
+  }
 }
