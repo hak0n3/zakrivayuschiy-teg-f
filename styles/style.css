@@ -16,7 +16,7 @@
   margin: 0 auto;
 
   font-family: var(--ff-main), sans-serif;
-  font-weight: var(--fw-main);
+  font-variation-settings: 'wght' var(--fw-main);
 
   background-color: #fff;
   background-image: var(--page-background);
@@ -153,7 +153,7 @@ main {
 .main__card-title {
   margin: 5px 8px;
 
-  font-weight: var(--fw-h2);
+  font-variation-settings: 'wght' var(--fw-h2);
   font-size: 18px;
   line-height: 22px;
 }
@@ -241,7 +241,7 @@ main {
 
 .footer__button-img {
   width: 21px;
-  height: 21px; 
+  height: 21px;
 }
 
 /* Modal */
