@@ -73,10 +73,12 @@
   
   .like-icon.is-liked .heart {
     animation: scaling-heart 0.3s ease-in 0.1s;
+    transform-origin: center;
   }
   
   .like-icon.is-liked .sparks {
     animation: flash-sparks 0.3s ease-in 0.3s;
+    transform-origin: center;
   }
 
   

@@ -1,6 +1,6 @@
 :root {
-  --ff-main: Inter;
-  --ff-supporting: PressStart2P;
+  --ff-main: 'Inter', sans-serif;
+  --ff-supporting: 'PressStart2P', sans-serif;
 
   --fw-main: 400;
   --fw-h2: 700;
