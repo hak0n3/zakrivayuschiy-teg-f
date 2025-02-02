@@ -280,6 +280,8 @@ dialog {
 .modal__text-image {
   width: 39px;
   height: 39px;
+
+  flex-shrink: 0;
 }
 
 .modal__title {
