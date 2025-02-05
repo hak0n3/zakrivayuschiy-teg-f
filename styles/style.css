@@ -260,6 +260,7 @@ dialog {
   gap: 30px;
 
   background: #fff;
+  overflow: hidden;
 }
 
 .modal[open] {
